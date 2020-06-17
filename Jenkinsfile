@@ -22,8 +22,6 @@ pipeline {
                 sh 'sudo apt install  -y build-essential'
                 sh 'sudo npm i -g npm'
                 sh 'sudo npm install serverless -g'
-                sh 'sudo npmconfig set prefix ‘~/.npm-global’'
-                sh 'export PATH=~/.npm-global/bin:$PATH'
                 sh 'sudo npm install -g https://artifactory.app.protego.io/cloudguard-serverless-plugin.tgz'
 				
                } catch (Exception e) {
