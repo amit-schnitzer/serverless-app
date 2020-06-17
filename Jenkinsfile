@@ -17,20 +17,16 @@ pipeline {
                    
          script {      
               try {
-         
-               
-            
-                sh 'apt install npm' 
-
-                sh 'npm install serverless -g'
-				sh 'curl –silent –location https://deb.nodesource.com/setup_8.x | bash	 –'
-				sh 'apt-get install –yes nodejs'			
-				sh ' apt-get install –yes build-essential'
-				sh 'npm i -g npm'
-				sh 'npm install serverless -g'
-				sh 'npmconfig set prefix ‘~/.npm-global’'
-				sh 'export PATH=~/.npm-global/bin:$PATH'
-				sh 'npm install -g https://artifactory.app.protego.io/cloudguard-serverless-plugin.tgz'
+                sh 'sudo apt install npm' 
+                sh 'sudo npm install serverless -g'
+				        sh 'curl –silent –location https://deb.nodesource.com/setup_8.x | bash	 –'
+				        sh 'sudo apt-get install –yes nodejs'			
+                sh 'sudo apt-get install –yes build-essential'
+                sh 'sudo npm i -g npm'
+                sh 'sudo npm install serverless -g'
+                sh 'sudo npmconfig set prefix ‘~/.npm-global’'
+                sh 'export PATH=~/.npm-global/bin:$PATH'
+                sh 'sudo npm install -g https://artifactory.app.protego.io/cloudguard-serverless-plugin.tgz'
 				
                } catch (Exception e) {
     
@@ -53,5 +49,4 @@ pipeline {
         
   } 
 }
-
 
