@@ -17,7 +17,7 @@ pipeline {
                    
          script {      
               try {
-                sh 'sudo apt install npm' 
+                sh 'sudo apt install -y npm' 
                 sh 'sudo npm install serverless -g'
 				        sh 'curl –silent –location https://deb.nodesource.com/setup_8.x | bash	 –'
 				        sh 'sudo apt-get install –yes nodejs'			
