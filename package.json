@@ -1,0 +1,19 @@
+{
+  "name": "serverless-app",
+  "version": "1.0.0",
+  "description": "My Serverless Application",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amit-schnitzer/serverless-app.git"
+  },
+  "author": "Amit Schnitzer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amit-schnitzer/serverless-app/issues"
+  },
+  "homepage": "https://github.com/amit-schnitzer/serverless-app#readme"
+}
