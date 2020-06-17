@@ -18,6 +18,7 @@ pipeline {
          script {      
               try {
                 sh 'sudo apt install -y npm' 
+                sh 'sudo npm install --unsafe-perm=true --allow-root'
 				        sh 'sudo apt install  -y nodejs'			
                 sh 'sudo apt install  -y build-essential'
                 sh 'sudo npm i -g npm'
