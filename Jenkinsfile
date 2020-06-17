@@ -37,13 +37,14 @@ pipeline {
           stage('Deploying my serverless application with CloudGuard security ') {
              
             steps {
-
+              withAWS(credentials: 'AWScred', region: 'eu-west-1'){
+              
               sh 'sls deploy'
            
               
              } 
            }
-        
+         }
   } 
 }
 
