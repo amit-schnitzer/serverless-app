@@ -39,7 +39,7 @@ pipeline {
             steps {
               withAWS(credentials: 'AWScred', region: 'eu-west-1'){
               
-              sh 'sls deploy'
+              sh 'sudo sls deploy'
            
               
              } 
