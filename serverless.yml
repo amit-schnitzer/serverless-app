@@ -23,7 +23,8 @@ service: serverless-app
 provider:
   name: aws
   runtime: nodejs12.x
-
+  region: eu-west-1
+  profile: default
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -84,7 +85,7 @@ custom:
         RuleViolation:
           Enabled:        true                    # default is true
           FailThreshold:  None                    # default is None
-          
+
 functions:
   hello:
     handler: handler.hello
