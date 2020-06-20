@@ -32,10 +32,9 @@ pipeline {
                   }  
                  }
               }   
-           }
-                 catch (Exception e) {
-                   echo "Code Analysis is BLOCK and recommend not using the source code"  
-                 }
+              catch (Exception e) {
+                echo "Code Analysis is BLOCK and recommend not using the source code"  
+              }
         }
       }
   }   
