@@ -31,11 +31,11 @@ pipeline {
                     sh 'cloudguard -V'
                   }  
                  }
+               catch (Exception e) {
+                 echo "Code Analysis is BLOCK and recommend not using the source code"  
+                } 
               } 
-       } 
-              catch (Exception e) {
-                echo "Code Analysis is BLOCK and recommend not using the source code"  
-              }
+         }     
      }
     stage('Deploying my serverless application with CloudGuard security ') {
       steps {
