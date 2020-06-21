@@ -1,13 +1,12 @@
 pipeline {
-  agent any  
+  stages {
+     agent any  
     withCredentials([[
       $class: 'AmazonWebServicesCredentialsBinding',
       credentialsId: credentialsId,
       accessKeyVariable: 'AWS_ACCESS_KEY_ID',
       secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-    ]]) {    
-  stages {
-          
+    ]]) {          
          stage('Clone Github repository') {
            steps {
               
