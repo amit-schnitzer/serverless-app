@@ -1,6 +1,6 @@
 pipeline {
+  agent any 
   stages {
-     agent any  
     withCredentials([[
       $class: 'AmazonWebServicesCredentialsBinding',
       credentialsId: credentialsId,
