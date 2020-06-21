@@ -1,25 +1,20 @@
 pipeline {
   agent any 
-  stages {
-    withCredentials([[
-      $class: 'AmazonWebServicesCredentialsBinding',
-      credentialsId: credentialsId,
-      accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-      secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-    ]]) {          
-         stage('Clone Github repository') {
-           steps {
-              
-             checkout scm
-           
-            }
-  
-          }
+  stages {        
+    stage('Clone Github repository') {
+      steps {
+        
+        checkout scm
+      
+      }
+
+    }
     stage('Serverless build stage') {   
        steps {           
          script {      
               try {
-                    ansiColor('xterm') {
+                withAWS(credentials: 'awsCredentials', region: 'us-east-1') {
+                  ansiColor('xterm') {
                     sh 'sudo apt install -y npm' 
                     sh 'sudo npm install --unsafe-perm=true --allow-root'
                     sh 'sudo apt install  -y nodejs'			
@@ -30,17 +25,19 @@ pipeline {
                     sh 'cloudguard -V'
                   }  
                  }
+              }
                catch (Exception e) {
                  echo "Code Analysis is BLOCK and recommend not using the source code"  
                 } 
-              } 
-         }     
-     }
+           } 
+      }     
+   }
     stage('Deploying my serverless application with CloudGuard security ') {
       steps {
-         ansiColor('xterm') {
-           sh 'sls deploy'
-         } 
+        withAWS(credentials: 'awsCredentials', region: 'us-east-1') {
+          ansiColor('xterm') {
+             sh 'sls deploy'
+          } 
         }
       }
     }    
