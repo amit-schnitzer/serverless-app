@@ -1,5 +1,11 @@
 pipeline {
-      agent any      
+  agent any  
+    withCredentials([[
+      $class: 'AmazonWebServicesCredentialsBinding',
+      credentialsId: credentialsId,
+      accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+      secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+    ]]) {    
   stages {
           
          stage('Clone Github repository') {
@@ -14,13 +20,7 @@ pipeline {
        steps {           
          script {      
               try {
-                withCredentials([[
-                  $class: 'AmazonWebServicesCredentialsBinding',
-                  credentialsId: credentialsId,
-                  accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                  secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                ]]) {
-                  ansiColor('xterm') {
+                    ansiColor('xterm') {
                     sh 'sudo apt install -y npm' 
                     sh 'sudo npm install --unsafe-perm=true --allow-root'
                     sh 'sudo apt install  -y nodejs'			
