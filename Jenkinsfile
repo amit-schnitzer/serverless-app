@@ -41,12 +41,6 @@ pipeline {
            
     stage('Deploying my serverless application with CloudGuard security ') {
       steps {
-       withCredentials([[
-         $class: 'AmazonWebServicesCredentialsBinding',
-         credentialsId: credentialsId,
-         accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-       ]]) {
          ansiColor('xterm') {
            sh 'sls deploy'
          } 
@@ -54,4 +48,3 @@ pipeline {
       }
     }    
   }
-}
