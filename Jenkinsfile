@@ -16,12 +16,12 @@ pipeline {
                 withAWS(credentials: 'awsCredentials', region: 'us-east-1') {
                   ansiColor('xterm') {
                     sh 'sudo apt install -y npm' 
-                    sh 'sudo npm install --unsafe-perm=true --allow-root'
+                    sh 'npm install --unsafe-perm=true --allow-root'
                     sh 'sudo apt install  -y nodejs'			
                     sh 'sudo apt install  -y build-essential'
                     sh 'sudo npm i -g npm'
-                    sh 'sudo npm install serverless'
-                    sh 'sudo npm install -D https://artifactory.app.protego.io/cloudguard-serverless-plugin.tgz'
+                    sh 'npm install serverless'
+                    sh 'npm install -D https://artifactory.app.protego.io/cloudguard-serverless-plugin.tgz'
                     sh 'cloudguard -V'
                   }  
                  }
